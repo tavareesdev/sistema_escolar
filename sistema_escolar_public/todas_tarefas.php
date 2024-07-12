@@ -18,8 +18,8 @@
 		<nav class="navbar navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="#">
-					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-					Lista Tarefas do Tavares
+					<img src="img/easyLogo.png" width="110" height="40" class="d-inline-block align-top" alt="">
+					Painel de Alunos
 				</a>
 			</div>
 		</nav>
@@ -28,9 +28,9 @@
 			<div class="row">
 				<div class="col-sm-3 menu">
 					<ul class="list-group">
-						<li class="list-group-item"><a href="index.php">Tarefas pendentes</a></li>
-						<li class="list-group-item"><a href="nova_tarefa.php">Nova tarefa</a></li>
-						<li class="list-group-item active"><a href="#">Todas tarefas</a></li>
+						<!-- <li class="list-group-item"><a href="index.php">Tarefas pendentes</a></li> -->
+						<li class="list-group-item"><a href="index.php">Nova tarefa</a></li>
+						<li class="list-group-item active"><a href="#">Painel de Alunos</a></li>
 					</ul>
 				</div>
 
@@ -38,18 +38,42 @@
 					<div class="container pagina">
 						<div class="row">
 							<div class="col">
-								<h4>Todas tarefas</h4>
+								<h4>Painel de Alunos</h4>
 								<hr />
-								<?php foreach ($tarefas as $indice => $tarefa){ ?>
-									<div class="row mb-3 d-flex align-items-center tarefa">
-										<div class="col-sm-9"><?= $tarefa['tarefa'] ?> (<?= $tarefa['status'] ?>)</div>
-										<div class="col-sm-3 mt-2 d-flex justify-content-between">
-											<i class="fas fa-trash-alt fa-lg text-danger"></i>
-											<i class="fas fa-edit fa-lg text-info"></i>
-											<i class="fas fa-check-square fa-lg text-success"></i>
-										</div>
-									</div>
-								<?php } ?>
+								<table class="table">
+									<thead>
+										<tr>
+											<th scope="col">Nome</th>
+											<th scope="col">Sobrenome</th>
+											<th scope="col">Data de Nascimento</th>
+											<th scope="col">Data de MTR</th>
+										</tr>
+									</thead>
+									<tbody>
+									<?php foreach ($tarefas as $indice => $tarefa): ?>
+										<tr>
+											<td><?= $tarefa['nome'] ?></td>
+											<td><?= $tarefa['sobrenome'] ?></td>
+											<td><?= formatarData($tarefa['data_nasc']) ?></td>
+											<td><?= formatarData($tarefa['data_mtr']) ?></td>
+										</tr>
+									<?php endforeach; ?>
+									<?php
+									// Função para formatar a data
+									function formatarData($data) {
+										// Verifica se a data não está vazia
+										if (!empty($data)) {
+											// Cria um objeto DateTime a partir da string da data
+											$date = new DateTime($data);
+											// Formata a data no formato desejado (d/m/Y)
+											return $date->format('d/m/Y');
+										} else {
+											return ''; // Retorna vazio se a data estiver vazia
+										}
+									}
+									?>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>

@@ -11,19 +11,34 @@
         }
 
         public function inserir(){
-            $query = 'insert into tb_tarefas(tarefa)values(:tarefa)';
+            $query = 'insert into tabela_aluno(
+                nome,
+                sobrenome,
+                data_nasc,
+                telefone,
+                data_mtr
+            )values(
+                :nome,
+                :sobrenome,
+                :data_nasc,
+                :celular,
+                :data_mtr
+                )';
             $stmt = $this->conexao->prepare($query);
-            $stmt->bindValue(':tarefa', $this->tarefa->__get('tarefa'));
+            $stmt->bindValue(':nome', $this->tarefa->__get('nome'));
+            $stmt->bindValue(':sobrenome', $this->tarefa->__get('sobrenome'));
+            $stmt->bindValue(':data_nasc', $this->tarefa->__get('data_nasc'));
+            $stmt->bindValue(':celular', $this->tarefa->__get('celular'));
+            $current_date = date('Y-m-d');
+            $stmt->bindValue(':data_mtr', $current_date);
             $stmt->execute();
         }
 
         public function recuperar(){
             $query = '
                 select 
-                    tb_tarefas.id, status, tarefa 
-                from tb_tarefas 
-                left join 
-                    tb_status on tb_status.id = tb_tarefas.id_status
+                    * 
+                from tabela_aluno
             ';
             $stmt = $this->conexao->prepare($query);
             $stmt->execute();
