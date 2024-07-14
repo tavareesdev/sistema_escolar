@@ -14,22 +14,11 @@
         $tarefa->__set('celular', $_POST['celular']);
 
         $conexao = new Conexao();
-    
+
         $tarefaService = new TarefaService($conexao, $tarefa);
         $tarefaService->inserir();
-        
-        header('Location: index.php?inclusao=1');
 
-        // if(trim($_POST['tarefa']) != ''){
-        //     $conexao = new Conexao();
-    
-        //     $tarefaService = new TarefaService($conexao, $tarefa);
-        //     $tarefaService->inserir();
-    
-        //     header('Location: index.php?inclusao=1');
-        // }else{
-        //     header('Location: index.php?inclusao=2');
-        // }
+        header('Location: index.php?inclusao=1');
     }else if ($acao == 'recuperar'){
         $tarefa = new Tarefa();
         $conexao = new Conexao();

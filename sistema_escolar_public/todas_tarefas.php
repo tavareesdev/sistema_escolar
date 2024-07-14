@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Lista Tarefas do Tavares</title>
+		<title>Controle de Alunos</title>
 
 		<link rel="stylesheet" href="css/estilo.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -29,7 +29,7 @@
 				<div class="col-sm-3 menu">
 					<ul class="list-group">
 						<!-- <li class="list-group-item"><a href="index.php">Tarefas pendentes</a></li> -->
-						<li class="list-group-item"><a href="index.php">Nova tarefa</a></li>
+						<li class="list-group-item"><a href="index.php">Novo(a) aluno(a)</a></li>
 						<li class="list-group-item active"><a href="#">Painel de Alunos</a></li>
 					</ul>
 				</div>
